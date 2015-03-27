@@ -1,0 +1,28 @@
+{
+  "name": "BreizhCamp2015",
+  "version": "0.0.1",
+  "authors": [
+    "Horacio Gonzalez <horacio.gonzalez@gmail.com>"
+  ],
+  "description": "Site web du BreizhCamp 2015",
+  "main": "index.html",
+  "keywords": [
+    "bootstrap",
+    "single",
+    "page",
+    "parallax"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.breizhcamp.org",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4"
+  }
+}
