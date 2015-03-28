@@ -2,6 +2,7 @@
 
 @orange: #f36f21;
 @dark: #202020;
+@white: #ffffff;
 
 html,
 body {
@@ -66,7 +67,7 @@ header {
   -o-background-size: cover;
   background-size: cover;
   height:550px;
-  color:#000000;
+  color:@dark;
 
   h1, h2 {
     color:#101010;
@@ -90,13 +91,37 @@ header {
       border-radius: 3px;
     }
   }
-
+  .logo {
+    max-width: 100%;
+  }
 
   .dropdown-menu {
     top:74px;
     background:  @orange;
     color: @dark;
     border-width:0;
+  }
+
+  .spacer {
+    height: 20px;
+  }
+
+  .info {
+    padding: 10px;
+    background: @white;
+    border: solid 1px @orange;
+
+    h2 {
+      font-size: 2.5em;
+      color: @orange;
+    }
+
+    .btn {
+      font-size: 1.5em;
+      background-color: @orange;
+      color: @white;
+      text-transform: uppercase;
+    }
   }
 }
 
