@@ -1,5 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Kreon:400,700);
 
+@orange: #f36f21;
+@dark: #202020;
+
 html,
 body {
   height: 100%;
@@ -65,21 +68,34 @@ header {
   height:550px;
   color:#000000;
 
-  h1, h2, h3 a, a, a:hover {
+  h1, h2 {
     color:#101010;
     font-weight:800;
     text-decoration:none;    
   }
 
-  h3 {
-    font-family: 'Kreon', serif;
-    color: #f36f21;
-    font-size:3em;
-    padding:12px 10px 6px 10px;
+
+  a {
+    h3 {
+      font-family: 'Kreon', serif;
+      font-size:3em;
+      padding:12px 10px 6px 10px;
+      color: @orange;
+    }
   }
+  a:hover {
+    h3 {
+      color: @dark;    
+      background: @orange;  
+      border-radius: 3px;
+    }
+  }
+
+
   .dropdown-menu {
     top:74px;
-    background: #ffcc33;
+    background:  @orange;
+    color: @dark;
     border-width:0;
   }
 }
@@ -165,18 +181,27 @@ h1 {
 }
 
 .scroll-top {
-   position:fixed;
-   bottom:0;
-   right:6%;
-   z-index:100;
-   background: #ffcc33;
-   font-size:24px;
-   border-top-left-radius:3px;
-   border-top-right-radius:3px;
+  position:fixed;
+  bottom:0;
+  right:6%;
+  z-index:100;
+  font-size:3em;
+  border-top-left-radius:3px;
+  border-top-right-radius:3px;
+  background: transparent;
+
+  li {
+
+   a, a:link, a:visited {
+    color: @orange;
+   }
+
+   a:hover {
+    color: @dark;
+    background: @orange;
+   }
+  }
 }
-.scroll-top a:link,.scroll-top a:visited {
-  color:#222;
-} 
  
 
 section {
