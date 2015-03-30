@@ -281,6 +281,29 @@ h1 {
   padding: 15px;
 }
 
+.feedback {
+  position:fixed;
+  bottom: 50px;
+  left: -30px;
+  font-weight: bold;
+  background-color: @orange;
+  border-top-left-radius:5px;  
+  border-top-right-radius:5px; 
+  -webkit-transform: rotate(90deg); 
+  -moz-transform: rotate(90deg); 
+  transform: rotate(90deg); 
+  li {
+    &>a {
+      text-transform: uppercase;
+      color: white;
+    }
+    &>a:hover, &>a:visited, &>a:focus {
+      text-decoration: none;
+      background-color: @orange;
+    }
+  }  
+}
+
 .scroll-top {
   position:fixed;
   bottom:0;
@@ -292,15 +315,13 @@ h1 {
   background: transparent;
 
   li {
-
-   a, a:link, a:visited {
-    color: @orange;
-   }
-
-   a:hover {
-    color: @dark;
-    background: @orange;
-   }
+    a, a:link, a:visited {
+      color: @orange;
+    }
+    a:hover {
+      color: @dark;
+      background: @orange;
+    }
   }
 }
  
