@@ -23,6 +23,10 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "~3.3.4"
+    "bootstrap": "~3.3.4",
+    "fullcalendar": "~1.5.3"
+  },
+  "resolutions": {
+    "jquery": ">= 1.9.1"
   }
 }

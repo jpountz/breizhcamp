@@ -10,6 +10,7 @@
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/fullcalendar/fullcalendar.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -21,6 +22,7 @@
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+
   </head>
   <body>
   
@@ -140,6 +142,45 @@
     </div>
 
     <div class="divider"></div>
+    <div id="agenda" class="container" ng-app="Programme" ng-controller="ProgrammeCtrl">
+        <h3 ng-show="loading">Chargement du programme...</h3>
+
+        <div id="programme" class="ng-cloak">
+
+            <a href="../programme.pdf" target="_blank" class="versionPdf">Version PDF</a>
+            <a href="http://www.voxxr.in" target="_blank" class="appMobile">Application mobile</a>
+
+            <div class="room">
+                <label>Salle
+                   <select ng-model="room" ng-change="loadAllCalendar()">
+                       <option value="">Toutes</option>
+                       <option value="Ouessant">Ouessant</option>
+                       <option value="Molène">Molène</option>
+                       <option value="Groix">Groix</option>
+                       <option value="Bréhat">Bréhat</option>
+                       <option value="Belle-Île-en-Mer">Belle-Île-en-Mer</option>
+                   </select>
+                </label>
+            </div>
+
+            <fieldset  ng-repeat="jour in programme.jours" >
+                <legend ng-click="loadCalendar(jour)">{{jour.date}}</legend>
+                <div id='calendar{{jour.title}}'></div>
+                <div calendar umbilical="programme.jours[$index]"></div>
+            </fieldset>
+        </div>
+
+<style type="text/css">
+        .ng-cloak {
+            display:none;
+        }
+        .fc-event { cursor: pointer; }
+    </style>
+
+        
+    </div>    
+
+    <div class="divider"></div>
       
     <div id="challenge" class="container">
       <!-- serez vous assez malin pour trouver tous les indices et décortiquer le challenge BreizhCamp 2015 -->
@@ -244,12 +285,132 @@
     <!-- build:js scripts/custom.js -->
 
     <!-- endbuild -->
-    <script src="js/scroll.js"></script>
+    <script src="js/scroll.js"></script>   
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/fullcalendar/fullcalendar.js"></script>
     <!-- endbower -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min.js"></script>
+    <script src="https://pagedown.googlecode.com/hg/Markdown.Converter.js"></script>
+    <script src="https://pagedown.googlecode.com/hg/Markdown.Sanitizer.js"></script>    
+    <script>
+        var app = angular.module("Programme", []);
+        var colors = {};
+        colors['universite'] = '#9900FF';
+        colors['quickie'] = '#38761D';
+        colors['hands-on'] = '#DD0000';
+        colors['tools in action'] = '#3D85C6';
+        colors['conference'] = '#FF9900';
+        colors['lab'] = '#696969';
+        colors['biglab'] = '#696969';
+        function ProgrammeCtrl($scope, $http, $log) {
+            $scope.loading = true;
+            $scope.room = "";
+            $http.get("../json/schedule.json")
+                    .success(function(data) {
+                        $scope.programme = data.programme;
+                        $scope.loading = false;
+                        console.log($scope.programme);
+                    });
+            $scope.converter = new Markdown.getSanitizingConverter();
+            $scope.getSafeDescription = function(description) {
+                if (description) {
+                    return $scope.converter.makeHtml(description);
+                }
+                return "";
+            };
+            $scope.loadAllCalendar = function() {
+                angular.forEach($scope.programme.jours, function(jour){
+                    $scope.loadCalendar(jour);
+                });
+            };
+            $scope.loadCalendar = function(jour) {
+                var dateInFields = jour.date.split('/');
+                var year = parseInt(dateInFields[2]);
+                var month = parseInt(dateInFields[1]);
+                var day = parseInt(dateInFields[0]);
+                var events = [];
+                angular.forEach(jour.tracks, function(track){
+                    angular.forEach(track.proposals, function(talk){
+                        if ($scope.room == "" || $scope.room == talk.room) {
+                           var timeInField = talk.start.split(':');
+                           var startHour = parseInt(timeInField[0]);
+                           var startMinutes = parseInt(timeInField[1]);
+                           timeInField = talk.end.split(':');
+                           var endHour = parseInt(timeInField[0]);
+                           var endMinutes = parseInt(timeInField[1]);
+                           var event = {
+                               title: talk.title + (talk.room ? " (" + talk.room + ")" : ''),
+                               start: new Date(year, month-1, day, startHour,startMinutes),
+                               end: new Date(year, month-1, day, endHour,endMinutes),
+                               id : talk.id,
+                               room : talk.room,
+                               allDay: false,
+                               color:colors[talk.format]
+                           };
+                           events.push(event);
+                        }
+                    });
+                });
+                $('#calendar' + jour.title).fullCalendar('removeEvents');
+                $('#calendar' + jour.title).html('');
+                $('#calendar' + jour.title).fullCalendar({
+                    defaultView: 'agendaDay',
+                    slotMinutes: 15,
+                    header: {
+                        left:   '',
+                        center: '',
+                        right: ''
+                    },
+                    titleFormat: {
+                        day: ''
+                    },
+                    columnFormat: {
+                        day: ''
+                    },
+                    allDaySlot: false,
+                    minTime: jour.title == 'day1' ? 13 : 8,
+                    maxTime: 20,
+                    axisFormat: 'HH:mm',
+                    contentHeight:10000,
+                    height:10000,
+                    timeFormat: {
+                        agenda: 'HH:mm{ - HH:mm}'
+                    },
+                    eventClick:function(calEvent, jsEvent, view) {
+                        $scope.showDetailOfTalk(calEvent.id, calEvent.room);
+                    },
+                    events: events
+                });
+                $('#calendar' + jour.title).fullCalendar(
+                        'gotoDate',
+                        year,
+                        month - 1,
+                        day);
+            };
+            
+        }
+        app.directive('calendar', function($parse, $timeout) {
+            return {
+                restrict: "A",
+                replace: true,
+                scope: {
+                    umbilical: "&"
+                },
+                transclude: false,
+                compile: function($parse) {
+                    return function(scope, el, attrs) {
+                        var jour = scope.umbilical();
+                        $timeout(function() {
+                            scope.$parent.loadCalendar(jour);
+                        }, 0);
+                    }
+                }
+            };
+        });
+    </script>
     <!-- endbuild -->
   </body>
 </html>  
