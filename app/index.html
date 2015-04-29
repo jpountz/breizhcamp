@@ -315,11 +315,8 @@
                         console.log($scope.programme);
                     });
             $scope.converter = new Markdown.getSanitizingConverter();
-            $scope.getSafeDescription = function(description) {
-                if (description) {
-                    return $scope.converter.makeHtml(description);
-                }
-                return "";
+            $scope.showDetailOfTalk = function(id) {                
+                window.location="http://cfp.breizhcamp.org/2015/talk/"+id;
             };
             $scope.loadAllCalendar = function() {
                 angular.forEach($scope.programme.jours, function(jour){
@@ -348,7 +345,7 @@
                                id : talk.id,
                                room : talk.room,
                                allDay: false,
-                               color:colors[talk.format]
+                               color:colors[talk.track]
                            };
                            events.push(event);
                         }
@@ -381,7 +378,7 @@
                         agenda: 'HH:mm{ - HH:mm}'
                     },
                     eventClick:function(calEvent, jsEvent, view) {
-                        $scope.showDetailOfTalk(calEvent.id, calEvent.room);
+                        $scope.showDetailOfTalk(calEvent.id);
                     },
                     events: events
                 });
