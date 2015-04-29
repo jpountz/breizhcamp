@@ -25,7 +25,7 @@
 
   </head>
   <body>
-  
+
     <header class="masthead">
       <div class="container">
         <div class="row">
@@ -34,7 +34,7 @@
             <img style="position:absolute; top:0; right: 0; z-index:1"  src="./img/soldout.png"/>
           </div>
           <div class="col-sm-2">
-            <div class="pull-right  hidden-xs">   
+            <div class="pull-right  hidden-xs">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <h3><i class="glyphicon glyphicon-align-justify"></i></h3>
               </a>
@@ -44,9 +44,9 @@
                   <li><a href="#sponsors">Sponsors</a></li>
                   <li><a href="#team">Team</a></li>
               </ul>
-            </div>           
+            </div>
           </div>
-        </div>        
+        </div>
 
         <div class="row spacer"></div>
 
@@ -97,17 +97,17 @@
           </div><!--/.nav-collapse -->
         </div><!--/.container -->
     </div><!--/.navbar -->
-      
+
     <!-- Begin page content -->
     <div class="divider"></div>
-      
+
     <div id="accueil" class="container">
 
       <h2>Introduction</h2>
 
       <p class="lead">La conférence des développeurs du grand ouest</p>
 
-      <p>Le <b>BreizhCamp</b>, c’est 3 jours de conférences et d’ateliers. Créé en 2011 à l’initiative du <a href="http://www.breizhjug.org">BreizhJUG</a>, sa 5<sup>ème</sup> édition aura lieu du 10 au 12 juin 2015 à Rennes, à l’<a href="http://www.istic.univ-rennes1.fr/">ISTIC</a>.</p> 
+      <p>Le <b>BreizhCamp</b>, c’est 3 jours de conférences et d’ateliers. Créé en 2011 à l’initiative du <a href="http://www.breizhjug.org">BreizhJUG</a>, sa 5<sup>ème</sup> édition aura lieu du 10 au 12 juin 2015 à Rennes, à l’<a href="http://www.istic.univ-rennes1.fr/">ISTIC</a>.</p>
 
       <p>Le <b>BreizhCamp</b> propose de rencontrer une communauté de développeurs et d’experts, avec un contenu à la carte sur plus de 100 thèmes présentés. Chaque participant est libre de suivre les sujets qui ont retenu son attention ou de préférer les ateliers pour mettre en pratique les connaissances acquises.</p>
 
@@ -177,24 +177,24 @@
         .fc-event { cursor: pointer; }
     </style>
 
-        
-    </div>    
+
+    </div>
 
     <div class="divider"></div>
-      
+
     <div id="challenge" class="container">
       <!-- serez vous assez malin pour trouver tous les indices et décortiquer le challenge BreizhCamp 2015 -->
       <div class="row">
         <div class="col-md-offset-3 col-sm-6 text-center">
-          <i class="glyphicon glyphicon-barcode"></i> 
+          <i class="glyphicon glyphicon-barcode"></i>
           633d52433428646174612c6b657929  (1/14)
         </div>
       </div>
     </div>
-    
+
 
     <div class="divider"></div>
-      
+
     <div id="sponsors" class="container">
 
       <h2>Sponsors &amp; Partenaires</h2>
@@ -227,7 +227,7 @@
         </div>
         <div class="col-sm-4">
           <div class="logo_sponsor"><a href="http://www.jouve.com/"><img src="img/logo_jouve.png" alt="Jouve"></a></div>
-        </div>      
+        </div>
       </div>
       <div class="row">
         <h3>Silver</h3>
@@ -255,17 +255,17 @@
         </div>
       </div>
     </div>
-   
+
     <div class="divider"></div>
-      
+
     <div id="team">
       <div class="container">
         <h2>Team BreizhCamp</h2>
       </div>
-    </div>    
+    </div>
 
 
-      
+
 
     <div id="footer">
       <div class="container">
@@ -285,16 +285,16 @@
     <!-- build:js scripts/custom.js -->
 
     <!-- endbuild -->
-    <script src="js/scroll.js"></script>   
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/fullcalendar/fullcalendar.js"></script>
     <!-- endbower -->
+    <script src="js/scroll.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min.js"></script>
     <script src="https://pagedown.googlecode.com/hg/Markdown.Converter.js"></script>
-    <script src="https://pagedown.googlecode.com/hg/Markdown.Sanitizer.js"></script>    
+    <script src="https://pagedown.googlecode.com/hg/Markdown.Sanitizer.js"></script>
     <script>
         var app = angular.module("Programme", []);
         var colors = {};
@@ -358,6 +358,7 @@
                 $('#calendar' + jour.title).html('');
                 $('#calendar' + jour.title).fullCalendar({
                     defaultView: 'agendaDay',
+                    slotEventOverlap: false,
                     slotMinutes: 15,
                     header: {
                         left:   '',
@@ -390,7 +391,7 @@
                         month - 1,
                         day);
             };
-            
+
         }
         app.directive('calendar', function($parse, $timeout) {
             return {
@@ -413,4 +414,4 @@
     </script>
     <!-- endbuild -->
   </body>
-</html>  
+</html>
