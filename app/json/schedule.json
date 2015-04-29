@@ -458,7 +458,7 @@
         }]
       },
       {
-        "type": "track 1",
+        "type": "track1",
         "proposals": [{
           "id": "IOD-0638",
           "start": "10:30",
@@ -501,7 +501,7 @@
         }]
       },
       {
-        "type": "track 2",
+        "type": "track2",
         "proposals": [{
           "id": "TSF-4040",
           "start": "10:30",
@@ -568,7 +568,7 @@
         }]
       },
       {
-        "type": "track 3",
+        "type": "track3",
         "proposals": [{
           "id": "LNX-9869",
           "start": "10:30",
@@ -635,7 +635,7 @@
         }]
       },
       {
-        "type": "track 4",
+        "type": "track4",
         "proposals": [{
           "id": "WZN-5052",
           "start": "10:30",
@@ -702,7 +702,7 @@
         }]
       },
       {
-        "type": "track 5",
+        "type": "track5",
         "proposals": [{
           "id": "DOI-7300",
           "start": "10:30",
@@ -737,7 +737,7 @@
         }]
       },
       {
-        "type": "track 6",
+        "type": "track6",
         "proposals": [{
           "id": "PRP-8244",
           "start": "10:30",

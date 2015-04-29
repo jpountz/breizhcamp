@@ -9,8 +9,8 @@
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/fullcalendar/fullcalendar.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/fullcalendar/fullcalendar.css">
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -321,15 +321,15 @@
 <script src="https://pagedown.googlecode.com/hg/Markdown.Sanitizer.js"></script>
 <script>
     var app = angular.module("Programme", []);
-    var colors = {};
-    colors['universite'] = '#9900FF';
-    colors['quickie'] = '#38761D';
-    colors['hands-on'] = '#DD0000';
-    colors['tools in action'] = '#3D85C6';
-    colors['conference'] = '#FF9900';
-    colors['lab'] = '#696969';
-    colors['biglab'] = '#696969';
-
+    var trackColors = {
+        'keynote': '#2D6B5F',
+        'track1': '#F80355',
+        'track2': '#2474FD',
+        'track3': '#87A10F',
+        'track4': '#F67906',
+        'track5': '#5D5094',
+        'track6': '#9D3FC9'
+    };
     var formatIcons = {
         'Autres': 'fa-gears',
         'Tools-in-Action': 'fa-wrench',
@@ -388,7 +388,7 @@
                             id: talk.id,
                             room: talk.room,
                             allDay: false,
-                            color: colors[talk.track],
+                            color: trackColors[track.type],
                             format: talk.format
                         };
                         events.push(event);
