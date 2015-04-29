@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3.4",
-    "fullcalendar": "~1.5.3"
+    "fullcalendar": "~1.6.6"
   },
   "resolutions": {
     "jquery": ">= 1.9.1"
