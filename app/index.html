@@ -361,6 +361,14 @@
             var month = parseInt(dateInFields[1]);
             var day = parseInt(dateInFields[0]);
             var events = [];
+
+            var timeFormat = 'HH:mm{ - HH:mm}';
+
+            function renderTitle(event) {
+                return '<i class="fa fa-fw ' + icons[event.format] + '"></i> ' + event.title +
+                    (event.room ? ' (' + event.room + ')' : '');
+            }
+
             angular.forEach(jour.tracks, function (track) {
                 angular.forEach(track.proposals, function (talk) {
                     if ($scope.room == "" || $scope.room == talk.room) {
@@ -371,17 +379,14 @@
                         var endHour = parseInt(timeInField[0]);
                         var endMinutes = parseInt(timeInField[1]);
                         var event = {
-                            title: "&nbsp;<i class='" + icons[talk.format] + "'></li>&nbsp; &nbsp;" +
-                                "<a href='cfp.breizhcamp.org/2015/talk/" + talk.id + "'>"
-                                + talk.title +
-                                "</a>"
-                                + (talk.room ? " (" + talk.room + ")" : ''),
+                            title: talk.title,
                             start: new Date(year, month - 1, day, startHour, startMinutes),
                             end: new Date(year, month - 1, day, endHour, endMinutes),
                             id: talk.id,
                             room: talk.room,
                             allDay: false,
-                            color: colors[talk.track]
+                            color: colors[talk.track],
+                            format: talk.format
                         };
                         events.push(event);
                     }
@@ -411,13 +416,20 @@
                 contentHeight: 10000,
                 height: 10000,
                 timeFormat: {
-                    agenda: 'HH:mm{ - HH:mm}'
+                    agenda: timeFormat
                 },
                 eventClick: function (calEvent, jsEvent, view) {
                     $scope.showDetailOfTalk(calEvent.id);
                 },
                 eventRender: function (event, element) {
-                    element.find('.fc-event-title').html(event.title);
+                    element.find('.fc-event-title').html(renderTitle(event));
+                    element.attr('title', event.title); // pour voir le titre en tooltip
+                },
+                eventAfterRender: function (event, element) {
+                    if (element.find('.fc-event-title').length === 0) { // fullcalendar supprime la div .fc-event-title sur les «petit» créneau
+                        element.find('.fc-event-time')
+                            .html($.fullCalendar.formatDate(event.start, timeFormat) + ' ' + renderTitle(event));
+                    }
                 },
                 events: events
             });
