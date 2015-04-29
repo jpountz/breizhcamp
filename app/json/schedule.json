@@ -11,7 +11,7 @@
           "start": "14:00",
           "end": "15:55",
           "title": "Lego Collaboration game - adultes et enfants",
-          "format": "Autres formats de conférence",
+          "format": "Autres",
           "room": "TBD"
         },
         {
@@ -19,7 +19,7 @@
           "start": "16:30",
           "end": "17:25",
           "title": "Lego 4 Devops",
-          "format": "Autres formats de conférence",
+          "format": "Autres",
           "room": "TBD"
         },
         {
@@ -38,7 +38,7 @@
           "start": "14:00",
           "end": "17:25",
           "title": "Mesos University",
-          "format": "Autres formats de conférence",
+          "format": "Autres",
           "room": "TBD"
         },
         {
@@ -65,7 +65,7 @@
           "start": "16:30",
           "end": "18:25",
           "title": "Hands on Kibana 4",
-          "format": "Hand's on Labs",
+          "format": "Lab",
           "room": "TBD"
         }]
       },

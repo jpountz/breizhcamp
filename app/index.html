@@ -22,6 +22,7 @@
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   </head>
   <body>
@@ -305,6 +306,14 @@
         colors['conference'] = '#FF9900';
         colors['lab'] = '#696969';
         colors['biglab'] = '#696969';
+
+        var icons = {};
+        icons['Conférence'] = 'fa fa-slideshare';
+        icons['Tools-in-Action'] = 'fa fa-wrench';
+        icons['Lab'] = 'fa fa-flask';
+        icons['Quickie'] = 'fa fa-clock-o';
+        icons['Hackathon'] = 'fa fa-terminal';
+        icons['Autres'] = 'fa fa-gears';
         function ProgrammeCtrl($scope, $http, $log) {
             $scope.loading = true;
             $scope.room = "";
@@ -339,7 +348,12 @@
                            var endHour = parseInt(timeInField[0]);
                            var endMinutes = parseInt(timeInField[1]);
                            var event = {
-                               title: talk.title + (talk.room ? " (" + talk.room + ")" : ''),
+                               title: 
+                                 "&nbsp;<i class='"+icons[talk.format]+"'></li>&nbsp; &nbsp;" +
+                                 "<a href='cfp.breizhcamp.org/2015/talk/"+talk.id+"'>"
+                                 +talk.title+
+                                 "</a>" 
+                                 + (talk.room ? " (" + talk.room + ")" : ''),
                                start: new Date(year, month-1, day, startHour,startMinutes),
                                end: new Date(year, month-1, day, endHour,endMinutes),
                                id : talk.id,
@@ -379,6 +393,9 @@
                     },
                     eventClick:function(calEvent, jsEvent, view) {
                         $scope.showDetailOfTalk(calEvent.id);
+                    },
+                    eventRender: function (event, element) {
+                       element.find('.fc-event-title').html(event.title);
                     },
                     events: events
                 });
