@@ -107,7 +107,7 @@
           "start": "09:00",
           "end": "09:55",
           "title": "KeyNote jeudi",
-          "format": "keynote",
+          "format": "Keynote",
           "room": "amphi"
         }]
       },
@@ -244,7 +244,7 @@
           "start": "11:30",
           "end": "12:25",
           "title": "Venez découvrir CDI, la perle de Java EE ! ",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -453,7 +453,7 @@
           "start": "9:00",
           "end": "10:00",
           "title": "Keynote",
-          "format": "keynote",
+          "format": "Keynote",
           "room": "TBD"
         }]
       },
@@ -472,7 +472,7 @@
           "start": "11:30",
           "end": "12:25",
           "title": "Passez à ES6 dès aujourd'hui avec BabelJS",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -480,7 +480,7 @@
           "start": "14:00",
           "end": "14:55",
           "title": "Stockage et analyse temps réel d'événements avec Riak chez Booking.com",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -488,7 +488,7 @@
           "start": "15:00",
           "end": "15:55",
           "title": "Comment (ne pas réussir à) modéliser ses data dans Elasticsearch",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -496,7 +496,7 @@
           "start": "16:30",
           "end": "17:25",
           "title": "Apache Lucene",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         }]
       },
@@ -507,7 +507,7 @@
           "start": "10:30",
           "end": "11:25",
           "title": "Et la diversité dans tout ça ? ",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -515,7 +515,7 @@
           "start": "11:30",
           "end": "12:25",
           "title": "Changing the wheel of a moving car - faire évoluer l'infra sans interruption ",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -523,7 +523,7 @@
           "start": "13:00",
           "end": "13:15",
           "title": "Thermosmart, le thermostat connecté ",
-          "format": "quickie",
+          "format": "Quickie",
           "room": "TBD"
         },
         {
@@ -531,7 +531,7 @@
           "start": "13:30",
           "end": "13:45",
           "title": "TDD: is it all about tests ? ",
-          "format": "quickie",
+          "format": "Quickie",
           "room": "TBD"
         },
         {
@@ -539,7 +539,7 @@
           "start": "14:00",
           "end": "14:55",
           "title": "Microplugins avec Docker",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -547,7 +547,7 @@
           "start": "15:00",
           "end": "15:55",
           "title": "Déploiement incrémental chez Pages Jaunes : feature flipping et traffic manager",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -555,7 +555,7 @@
           "start": "16:30",
           "end": "17:25",
           "title": "Les développeurs aussi maîtrisent le systemd",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -563,7 +563,7 @@
           "start": "17:30",
           "end": "18:00",
           "title": "Retour vers le (passé|futur)* avec Git",
-          "format": "tools in action",
+          "format": "Tools-in-Action",
           "room": "TBD"
         }]
       },
@@ -574,7 +574,7 @@
           "start": "10:30",
           "end": "11:25",
           "title": "Angular 2, Le Réveil de la Force",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -582,7 +582,7 @@
           "start": "11:30",
           "end": "12:25",
           "title": "Tester une application Javascript ",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -590,7 +590,7 @@
           "start": "13:00",
           "end": "13:15",
           "title": "Refactoring avec 1,22% de code couvert par les tests ... Golden Master testing à la rescousse ! ",
-          "format": "quickie",
+          "format": "Quickie",
           "room": "TBD"
         },
         {
@@ -598,7 +598,7 @@
           "start": "13:30",
           "end": "13:45",
           "title": "Travailler dans une startup la tête dans les nuages ",
-          "format": "quickie",
+          "format": "Quickie",
           "room": "TBD"
         },
         {
@@ -606,7 +606,7 @@
           "start": "14:00",
           "end": "14:55",
           "title": "Designing Capitaine Train Mobile Experience",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -614,7 +614,7 @@
           "start": "15:00",
           "end": "15:55",
           "title": "Latence applicative et API en streaming",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -622,7 +622,7 @@
           "start": "16:30",
           "end": "17:25",
           "title": "45 outils pour doper votre front-end",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -630,7 +630,7 @@
           "start": "17:30",
           "end": "18:00",
           "title": "DevOps dans ton chat !",
-          "format": "tools in action",
+          "format": "Tools-in-Action",
           "room": "TBD"
         }]
       },
@@ -641,7 +641,7 @@
           "start": "10:30",
           "end": "11:25",
           "title": "The Art of Parsing",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -657,7 +657,7 @@
           "start": "13:00",
           "end": "13:15",
           "title": "History of cryptography : the sod Machofeminist way",
-          "format": "quickie",
+          "format": "Quickie",
           "room": "TBD"
         },
         {
@@ -665,7 +665,7 @@
           "start": "13:00",
           "end": "13:45",
           "title": "Dropwizard en un éclair",
-          "format": "quickie",
+          "format": "Quickie",
           "room": "TBD"
         },
         {
@@ -673,7 +673,7 @@
           "start": "14:00",
           "end": "14:55",
           "title": "Hashons peu mais hashons bien",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -681,7 +681,7 @@
           "start": "15:00",
           "end": "15:55",
           "title": "JHipster, le générateur d'applications Spring + AngularJS",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -689,7 +689,7 @@
           "start": "16:30",
           "end": "17:25",
           "title": "Python après 15 ans de JAVA",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -697,7 +697,7 @@
           "start": "17:30",
           "end": "18:00",
           "title": "Gulp Fiction : surveiller, tester, builder, livrer... sans tomber dans les poms",
-          "format": "tools in action",
+          "format": "Tools-in-Action",
           "room": "TBD"
         }]
       },
@@ -708,7 +708,7 @@
           "start": "10:30",
           "end": "11:25",
           "title": "Broker de messages Kafka, retour d'expérience",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -716,7 +716,7 @@
           "start": "11:30",
           "end": "12:25",
           "title": "Performance Pudding, une recette simple et économique.",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -724,7 +724,7 @@
           "start": "14:00",
           "end": "14:55",
           "title": "A Saner Management for a Multi-facet Development Environment with Vagrant and Docker",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         },
         {
@@ -732,7 +732,7 @@
           "start": "15:00",
           "end": "15:55",
           "title": "MongoDB et Elastic{search}, meilleurs ennemis ?",
-          "format": "conference",
+          "format": "Conférence",
           "room": "TBD"
         }]
       },
@@ -743,7 +743,7 @@
           "start": "10:30",
           "end": "12:25",
           "title": "Kanbanzine : comment aborder Kanban de manière ludique",
-          "format": "tools in action",
+          "format": "Tools-in-Action",
           "room": "TBD"
         }]
       }]

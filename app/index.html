@@ -330,13 +330,16 @@
     colors['lab'] = '#696969';
     colors['biglab'] = '#696969';
 
-    var icons = {};
-    icons['Conférence'] = 'fa fa-slideshare';
-    icons['Tools-in-Action'] = 'fa fa-wrench';
-    icons['Lab'] = 'fa fa-flask';
-    icons['Quickie'] = 'fa fa-clock-o';
-    icons['Hackathon'] = 'fa fa-terminal';
-    icons['Autres'] = 'fa fa-gears';
+    var formatIcons = {
+        'Autres': 'fa-gears',
+        'Tools-in-Action': 'fa-wrench',
+        'Conférence': 'fa-slideshare',
+        'Lab': 'fa-flask',
+        'Hackaton': 'fa-terminal',
+        'Keynote': 'fa-user',
+        'Hand\'s on Labs': 'fa-flask',
+        'Quickie': 'fa-clock-o'
+    };
     function ProgrammeCtrl($scope, $http, $log) {
         $scope.loading = true;
         $scope.room = "";
@@ -365,7 +368,7 @@
             var timeFormat = 'HH:mm{ - HH:mm}';
 
             function renderTitle(event) {
-                return '<i class="fa fa-fw ' + icons[event.format] + '"></i> ' + event.title +
+                return '<i class="fa fa-fw ' + formatIcons[event.format] + '"></i> ' + event.title +
                     (event.room ? ' (' + event.room + ')' : '');
             }
 
