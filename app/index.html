@@ -193,6 +193,10 @@
         .fc-event {
             cursor: pointer;
         }
+        .favorite {
+            float: right;
+            margin: 3px;
+        }
     </style>
 
 
@@ -346,11 +350,10 @@
     function ProgrammeCtrl($scope, $http, $log) {
         $scope.loading = true;
         $scope.room = "";
-        $http.get("../json/schedule.json")
+        $http.get("./json/schedule.json")
             .success(function (data) {
                 $scope.programme = data.programme;
                 $scope.loading = false;
-                console.log($scope.programme);
             });
         $scope.converter = new Markdown.getSanitizingConverter();
         $scope.showDetailOfTalk = function (id) {
@@ -361,14 +364,47 @@
                 $scope.loadCalendar(jour);
             });
         };
+        $scope.getDevice = function() {
+            $scope.deviceId = localStorage.getItem('deviceId');
+            if ($scope.deviceId) {
+                $http.defaults.headers.common.Authorization = 'a@' + $scope.deviceId;
+            }
+            else {
+                $http.post('http://app.voxxr.in/r/devices/', { 'userAgent': navigator.userAgent })
+                    .success(function(data) {
+                        localStorage.setItem('deviceId', data.id);
+                        $scope.getDevice();
+                })
+            }
+        };
+
+        $scope.getDevice();
+
+        $scope.toggleFavorite = function(talk) {
+            var voxxrinId = '15-' + talk.id.toLowerCase();
+            $http.post('http://app.voxxr.in/r/events/bzh15/presentations/' + voxxrinId + '/my', {
+                "userid":$scope.deviceId,
+                "deviceid":$scope.deviceId,
+                "eventId":"bzh15",
+                "presId":voxxrinId,
+                "favorite":talk.favorite,
+                "id":$scope.deviceId+'/bzh15/'+voxxrinId})
+                    .success(function(data){
+                          console.log(data);
+                    })
+        };
+
         $scope.loadCalendar = function (jour) {
             var dateInFields = jour.date.split('/');
             var year = parseInt(dateInFields[2]);
             var month = parseInt(dateInFields[1]);
             var day = parseInt(dateInFields[0]);
             var events = [];
-
             var timeFormat = 'HH:mm{ - HH:mm}';
+            var favorites = JSON.parse(localStorage.getItem('favorites'));
+            if (!favorites) {
+                favorites = {};
+            }
 
             function renderTitle(event) {
                 return '<i class="fa fa-fw ' + formatIcons[event.format] + '"></i> ' + event.title +
@@ -393,7 +429,8 @@
                             allDay: false,
                             color: trackColors[track.type],
                             textColor: 'black',
-                            format: talk.format
+                            format: talk.format,
+                            favorite: favorites[talk.id]
                         };
                         events.push(event);
                     }
@@ -437,6 +474,22 @@
                         element.find('.fc-event-time')
                             .html($.fullCalendar.formatDate(event.start, timeFormat) + ' ' + renderTitle(event));
                     }
+                    // gestion favoris
+                    var favClass = event.favorite ? 'fa-star' : 'fa-star-o';
+                    var favIcon = $('<i class="favorite fa ' + favClass + '" title="Ajouter/supprimer des favoris"></i>');
+                    favIcon.on('click', event, function(evt) {
+                        evt.stopPropagation();
+                        $(this).toggleClass('fa-star');
+                        $(this).toggleClass('fa-star-o');
+
+                        evt.data.favorite = !evt.data.favorite;
+                        favorites[evt.data.id] = evt.data.favorite;
+                        localStorage.setItem('favorites', JSON.stringify(favorites));
+
+                        $scope.toggleFavorite(evt.data);
+
+                    });
+                    element.find('.fc-event-time').prepend(favIcon);                    
                 },
                 events: events
             });
