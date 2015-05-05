@@ -173,44 +173,77 @@
 <div id="agenda" class="container" ng-app="Programme" ng-controller="ProgrammeCtrl">
     <h2>Programme</h2>
 
-    <h3 ng-show="loading">Chargement du programme...</h3>
-
-    <div id="programme" class="ng-cloak">
-
-        <div class="room">
-            <label>Salle
-                <select ng-model="room" ng-change="loadAllCalendar()">
-                    <option value="">Toutes</option>
-                    <option value="Ouessant">Ouessant</option>
-                    <option value="Molène">Molène</option>
-                    <option value="Groix">Groix</option>
-                    <option value="Bréhat">Bréhat</option>
-                    <option value="Belle-Île-en-Mer">Belle-Île-en-Mer</option>
-                </select>
-            </label>
+    <div class="row" id="legende">
+        <div class="col-sm-6">
+            formats :         
+            <ul>
+                <li><i class="fa fa-fw fa-slideshare"></i> : <em>Conférence</em>, 50 minutes pour apprendre un max</li>
+                <li><i class="fa fa-fw fa-wrench"></i> : <em>Tools in Action</em>, 25 minutes avec un max de démo</li>
+                <li><i class="fa fa-fw fa-clock-o"></i> : <em>Quickie</em>, 15 minutes pour vous convaincre</li>
+                <li><i class="fa fa-fw fa-flask"></i> : <em>Hands on Lab</em>, 2h les mains dans le cambouis</li>
+                <li><i class="fa fa-fw fa-terminal"></i> : <em>Hackathon</em>, à vous de jouer !</li>
+                <li><i class="fa fa-fw fa-user"></i> : <em>Keynote</em>, des trucs sérieux (ou pas)</li>
+                <li><i class="fa fa-fw fa-gears"></i> : <em>Autres</em>, tout le reste</li>
+            <ul>    
         </div>
+        <div class="col-sm-6">
+            Tracks:
+            <ul>
+                <li style="color:#F80355">Architecture, Performance &amp; Securité</li>
+                <li style="color:#2474FD">Agilité, Méthodologie &amp; Tests</li>
+                <li style="color:#87A10F">Java, JVM, Javas SE/EE</li>
+                <li style="color:#F67906">Cloud, DevOps, Outils</li>
+                <li style="color:#5D5094">BigData et Analytics</li>
+                <li style="color:#9D3FC9">Objects connectés, IoT, Robotique</li>
+                <li style="color:#FFD700">Languages</li>
+                <li style="color:#00CED1">Web, Mobile &amp; UX</li>
+                </li>    
+            </ul>    
+        </div>
+    <div>
 
-        <fieldset ng-repeat="jour in programme.jours">
-            <legend ng-click="loadCalendar(jour)">{{jour.date}}</legend>
-            <div id='calendar{{jour.title}}'></div>
-            <div calendar umbilical="programme.jours[$index]"></div>
-        </fieldset>
+    <div class="row">
+        <div class="col-sm-12">
+            <h3 ng-show="loading">Chargement du programme...</h3>
+
+            <div id="programme" class="ng-cloak">
+
+                <div class="room">
+                    <label>Salle
+                        <select ng-model="room" ng-change="loadAllCalendar()">
+                            <option value="">Toutes</option>
+                            <option value="Ouessant">Ouessant</option>
+                            <option value="Molène">Molène</option>
+                            <option value="Groix">Groix</option>
+                            <option value="Bréhat">Bréhat</option>
+                            <option value="Belle-Île-en-Mer">Belle-Île-en-Mer</option>
+                        </select>
+                    </label>
+                </div>
+
+                <fieldset ng-repeat="jour in programme.jours">
+                    <legend ng-click="loadCalendar(jour)">{{jour.date}}</legend>
+                    <div id='calendar{{jour.title}}'></div>
+                    <div calendar umbilical="programme.jours[$index]"></div>
+                </fieldset>
+            </div>
+
+            <style type="text/css">
+                .ng-cloak {
+                    display: none;
+                }
+
+                .fc-event {
+                    cursor: pointer;
+                }
+                .favorite {
+                    float: right;
+                    margin: 3px;
+                }
+            </style>
+
+        </div>
     </div>
-
-    <style type="text/css">
-        .ng-cloak {
-            display: none;
-        }
-
-        .fc-event {
-            cursor: pointer;
-        }
-        .favorite {
-            float: right;
-            margin: 3px;
-        }
-    </style>
-
 
 </div>
 
@@ -361,6 +394,8 @@
         'track4': '#F67906',
         'track5': '#5D5094',
         'track6': '#9D3FC9',
+        'track7': '#FFD700',
+        'track8': '#00CED1',
         'break': '#eee'
     };
     var formatIcons = {
@@ -437,30 +472,28 @@
                     (event.room ? ' (' + event.room + ')' : '');
             }
 
-            angular.forEach(jour.tracks, function (track) {
-                angular.forEach(track.proposals, function (talk) {
-                    if ($scope.room == "" || $scope.room == talk.room) {
-                        var timeInField = talk.start.split(':');
-                        var startHour = parseInt(timeInField[0]);
-                        var startMinutes = parseInt(timeInField[1]);
-                        timeInField = talk.end.split(':');
-                        var endHour = parseInt(timeInField[0]);
-                        var endMinutes = parseInt(timeInField[1]);
-                        var event = {
-                            title: talk.title,
-                            start: new Date(year, month - 1, day, startHour, startMinutes),
-                            end: new Date(year, month - 1, day, endHour, endMinutes),
-                            id: talk.id,
-                            room: talk.room,
-                            allDay: false,
-                            color: trackColors[track.type],
-                            textColor: 'black',
-                            format: talk.format,
-                            favorite: favorites[talk.id]
-                        };
-                        events.push(event);
-                    }
-                });
+            angular.forEach(jour.proposals, function (talk) {
+                if ($scope.room == "" || $scope.room == talk.room) {
+                    var timeInField = talk.start.split(':');
+                    var startHour = parseInt(timeInField[0]);
+                    var startMinutes = parseInt(timeInField[1]);
+                    timeInField = talk.end.split(':');
+                    var endHour = parseInt(timeInField[0]);
+                    var endMinutes = parseInt(timeInField[1]);
+                    var event = {
+                        title: talk.title,
+                        start: new Date(year, month - 1, day, startHour, startMinutes),
+                        end: new Date(year, month - 1, day, endHour, endMinutes),
+                        id: talk.id,
+                        room: talk.room,
+                        allDay: false,
+                        color: trackColors[talk.track],
+                        textColor: 'black',
+                        format: talk.format,
+                        favorite: favorites[talk.id]
+                    };
+                    events.push(event);
+                }                
             });
             $('#calendar' + jour.title).fullCalendar('removeEvents');
             $('#calendar' + jour.title).html('');
