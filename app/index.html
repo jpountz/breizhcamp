@@ -381,8 +381,6 @@
 <!-- endbuild -->
 <script src="js/scroll.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min.js"></script>
-<script src="https://pagedown.googlecode.com/hg/Markdown.Converter.js"></script>
-<script src="https://pagedown.googlecode.com/hg/Markdown.Sanitizer.js"></script>
 <script>
     var app = angular.module("Programme", []);
     var trackColors = {
@@ -415,7 +413,6 @@
                 $scope.programme = data.programme;
                 $scope.loading = false;
             });
-        $scope.converter = new Markdown.getSanitizingConverter();
         $scope.showDetailOfTalk = function (id) {
             window.location = "http://cfp.breizhcamp.org/2015/talk/" + id;
         };
