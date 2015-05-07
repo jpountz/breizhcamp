@@ -143,7 +143,7 @@
                 sponsors n'utilisant pas toutes les places qui leur sont
                 réservées nous permettent de procéder à un tirage au sort.</p>
 
-            <h3>Programme</h3>      
+            <h3>Programme</h3>
 
             <p>Nous avons reçu près de deux fois plus de propositions que de sessions disponibles, le commité de
                 sélection a donc patiemment revu chaque sujet et voté, et
@@ -164,8 +164,8 @@
                 <li><a href="http://eepurl.com/bi8wYr">Numéro 4</a></li>
                 <li><a href="http://eepurl.com/bklwrP">Numéro 5</a></li>
                 <li><a href="http://eepurl.com/blNdV9">Numéro 6</a></li>
-            </ul>    
-                    </div>
+            </ul>
+         </div>
     </div>
 </div>
 
@@ -175,7 +175,7 @@
 
     <div class="row" id="legende">
         <div class="col-sm-6">
-            formats :         
+            formats :
             <ul>
                 <li><i class="fa fa-fw fa-slideshare"></i> : <em>Conférence</em>, 50 minutes pour apprendre un max</li>
                 <li><i class="fa fa-fw fa-wrench"></i> : <em>Tools in Action</em>, 25 minutes avec un max de démo</li>
@@ -184,23 +184,22 @@
                 <li><i class="fa fa-fw fa-terminal"></i> : <em>Hackathon</em>, à vous de jouer !</li>
                 <li><i class="fa fa-fw fa-user"></i> : <em>Keynote</em>, des trucs sérieux (ou pas)</li>
                 <li><i class="fa fa-fw fa-gears"></i> : <em>Autres</em>, tout le reste</li>
-            <ul>    
+            </ul>
         </div>
         <div class="col-sm-6">
             Tracks:
             <ul>
-                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#F80355">Architecture, Performance &amp; Securité</li>
-                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#2474FD">Agilité, Méthodologie &amp; Tests</li>
-                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#87A10F">Java, JVM, Javas SE/EE</li>
-                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#F67906">Cloud, DevOps, Outils</li>
-                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#5D5094">BigData et Analytics</li>
-                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#9D3FC9">Objects connectés, IoT, Robotique</li>
-                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#FFD700">Languages</li>
-                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#00CED1">Web, Mobile &amp; UX</li>
-                </li>    
-            </ul>    
+                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#FA4280">Architecture, Performance &amp; Securité</li>
+                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#5B97FE">Agilité, Méthodologie &amp; Tests</li>
+                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#A5B94B">Java, JVM, Javas SE/EE</li>
+                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#F89B44">Cloud, DevOps, Outils</li>
+                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#867CAF">BigData et Analytics</li>
+                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#B66FD7">Objects connectés, IoT, Robotique</li>
+                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#FFE140">Languages</li>
+                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#40DADD">Web, Mobile &amp; UX</li>
+            </ul>
         </div>
-    <div>
+    </div>
 
     <div class="row">
         <div class="col-sm-12">
@@ -342,7 +341,7 @@
         </div>
     </div>
     <div class="row">
-        <center>Pour nous rejoindre : <a href="mailto:contact@breizhcamp.org">contact@breizhcamp.org</a></center>
+        <div class="text-center">Pour nous rejoindre : <a href="mailto:contact@breizhcamp.org">contact@breizhcamp.org</a></div>
     </div>
 </div>
 
@@ -493,7 +492,7 @@
                         favorite: favorites[talk.id]
                     };
                     events.push(event);
-                }                
+                }
             });
             $('#calendar' + jour.title).fullCalendar('removeEvents');
             $('#calendar' + jour.title).html('');
@@ -551,7 +550,7 @@
                             $scope.toggleFavorite(evt.data);
 
                         });
-                        element.find('.fc-event-time').prepend(favIcon);                    
+                        element.find('.fc-event-time').prepend(favIcon);
                     }
                 },
                 events: events

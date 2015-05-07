@@ -6,12 +6,9 @@ Les contributions sont bienvenues :P
 
 
 Pour tester chez vous :
-```
-npm install
-npm install grunt
-npm install grunt-cli
-npm install grunt-cli -g
-npm install bower -g
-bower install
-grunt serve
+```bash
+$ npm install -g grunt-cli bower 
+$ npm install
+$ bower install
+$ grunt serve
 ```
