@@ -9,8 +9,8 @@
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="bower_components/fullcalendar/fullcalendar.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/fullcalendar/fullcalendar.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col-sm-10">
                 <a href="#" title="BreizhCamp 2015"><img src="./img/logo.png" alt="BreizhCamp 2015" class="logo"></a>
-                <img style="position:absolute; top:0; right: 0; z-index:1" src="./img/soldout.png"/>
+                <img id="soldout" src="./img/soldout.png"/>
             </div>
             <div class="col-sm-2">
                 <div class="pull-right  hidden-xs">
@@ -143,17 +143,29 @@
                 sponsors n'utilisant pas toutes les places qui leur sont
                 réservées nous permettent de procéder à un tirage au sort.</p>
 
-        </div>
-        <div class="col-sm-6 col-right">
-
             <h3>Programme</h3>
 
             <p>Nous avons reçu près de deux fois plus de propositions que de sessions disponibles, le commité de
                 sélection a donc patiemment revu chaque sujet et voté, et
                 a publié le <a href="http://cfp.breizhcamp.org/2015/talks.html">programme de la conférence</a>. L'agenda
                 détaillé sera publié rapidement.</p>
-
         </div>
+        <div class="col-sm-6 col-right">
+            <h3>Notre lettre d'information</h3>
+
+            <p>Soyez informé de toute l'actualité du BreizhCamp en vous abonnant à notre lettre d'information. Des nouvelles
+                fraîches, des exclusivités, quelques surprises ... bref, de quoi patienter en attendant que la date de la
+                conférence arrive ! <a href="http://eepurl.com/be2Ihr">Abonnez-vous&nbsp;!</a>
+
+            <ul>
+                <li><a href="http://eepurl.com/be2x8X">Numéro 1</a></li>
+                <li><a href="http://eepurl.com/bgCC2r">Numéro 2</a></li>
+                <li><a href="http://eepurl.com/bhQqjn">Numéro 3</a></li>
+                <li><a href="http://eepurl.com/bi8wYr">Numéro 4</a></li>
+                <li><a href="http://eepurl.com/bklwrP">Numéro 5</a></li>
+                <li><a href="http://eepurl.com/blNdV9">Numéro 6</a></li>
+            </ul>
+         </div>
     </div>
 </div>
 
@@ -161,44 +173,82 @@
 <div id="agenda" class="container" ng-app="Programme" ng-controller="ProgrammeCtrl">
     <h2>Programme</h2>
 
-    <h3 ng-show="loading">Chargement du programme...</h3>
-
-    <div id="programme" class="ng-cloak">
-
-        <div class="room">
-            <label>Salle
-                <select ng-model="room" ng-change="loadAllCalendar()">
-                    <option value="">Toutes</option>
-                    <option value="Ouessant">Ouessant</option>
-                    <option value="Molène">Molène</option>
-                    <option value="Groix">Groix</option>
-                    <option value="Bréhat">Bréhat</option>
-                    <option value="Belle-Île-en-Mer">Belle-Île-en-Mer</option>
-                </select>
-            </label>
+    <div class="row" id="legende">
+        <div class="col-sm-6">
+            formats :
+            <ul>
+                <li><i class="fa fa-fw fa-slideshare"></i> : <em>Conférence</em>, 50 minutes pour apprendre un max</li>
+                <li><i class="fa fa-fw fa-wrench"></i> : <em>Tools in Action</em>, 25 minutes avec un max de démo</li>
+                <li><i class="fa fa-fw fa-clock-o"></i> : <em>Quickie</em>, 15 minutes pour vous convaincre</li>
+                <li><i class="fa fa-fw fa-flask"></i> : <em>Hands on Lab</em>, 2h les mains dans le cambouis</li>
+                <li><i class="fa fa-fw fa-terminal"></i> : <em>Hackathon</em>, à vous de jouer !</li>
+                <li><i class="fa fa-fw fa-user"></i> : <em>Keynote</em>, des trucs sérieux (ou pas)</li>
+                <li><i class="fa fa-fw fa-gears"></i> : <em>Autres</em>, tout le reste</li>
+            </ul>
         </div>
-
-        <fieldset ng-repeat="jour in programme.jours">
-            <legend ng-click="loadCalendar(jour)">{{jour.date}}</legend>
-            <div id='calendar{{jour.title}}'></div>
-            <div calendar umbilical="programme.jours[$index]"></div>
-        </fieldset>
+        <div class="col-sm-6">
+            Tracks:
+            <ul>
+                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#FA4280">Architecture, Performance &amp; Securité</li>
+                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#5B97FE">Agilité, Méthodologie &amp; Tests</li>
+                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#A5B94B">Java, JVM, Javas SE/EE</li>
+                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#F89B44">Cloud, DevOps, Outils</li>
+                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#867CAF">BigData et Analytics</li>
+                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#B66FD7">Objects connectés, IoT, Robotique</li>
+                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#FFE140">Languages</li>
+                <li style="padding-left:0.5em;margin-bottom:1px;background-color:#40DADD">Web, Mobile &amp; UX</li>
+            </ul>
+        </div>
     </div>
 
-    <style type="text/css">
-        .ng-cloak {
-            display: none;
-        }
+    <div class="row">
+        <div class="col-sm-12">
+            <h3 ng-show="loading">Chargement du programme...</h3>
 
-        .fc-event {
-            cursor: pointer;
-        }
-        .favorite {
-            float: right;
-            margin: 3px;
-        }
-    </style>
+            <div id="programme" class="ng-cloak">
 
+                <div class="room">
+                    <label>Salle
+                        <select ng-model="room" ng-change="loadAllCalendar()">
+                            <option value="">Toutes</option>
+                            <option value="Ouessant">Ouessant</option>
+                            <option value="Molène">Molène</option>
+                            <option value="Groix">Groix</option>
+                            <option value="Bréhat">Bréhat</option>
+                            <option value="Belle-Île-en-Mer">Belle-Île-en-Mer</option>
+                        </select>
+                    </label>
+                </div>
+
+                <fieldset ng-repeat="jour in programme.jours">
+                    <legend ng-click="loadCalendar(jour)">{{jour.date}}</legend>
+                    <div id='calendar{{jour.title}}'></div>
+                    <div calendar umbilical="programme.jours[$index]"></div>
+                </fieldset>
+            </div>
+
+            <style type="text/css">
+                .ng-cloak {
+                    display: none;
+                }
+
+                .fc-event {
+                    cursor: pointer;
+                }
+                .favorite {
+                    float: right;
+                    margin: 3px;
+                }
+
+                @media (min-width: 1280px) {
+                    .modal-lg {
+                        width: 1200px;
+                    }
+                }
+            </style>
+
+        </div>
+    </div>
 
 </div>
 
@@ -268,12 +318,23 @@
                                                                                 alt="Cloudbees"></a></div>
         </div>
         <div class="col-sm-3">
-            <div class="logo_sponsor"><a href="https://github.com/"><img src="img/logo_github.png" alt="GitHub"></a>
-            </div>
+            <div class="logo_sponsor"><a href="https://github.com/"><img src="img/logo_github.png" alt="GitHub"></a></div>
         </div>
         <div class="col-sm-3">
             <div class="logo_sponsor"><a href="http://www.sonarsource.com/"><img src="img/logo_sonarsource.png"
                                                                                  alt="SonarSource"></a></div>
+        </div>
+    </div>
+    <div class="row silver">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-3">
+            <div class="logo_sponsor"><a href="http://http://www.ippon.fr//"><img src="img/logo_ippon.png" alt="Ippon"></a></div>
+        </div>
+        <div class="col-sm-3">
+            <div class="logo_sponsor"><a href="http://www.netapsys.fr/"><img src="img/logo_netapsys.jpg" alt="Netapsys"></a></div>
+        </div>
+        <div class="col-sm-3">
         </div>
     </div>
     <div class="row">
@@ -284,6 +345,9 @@
             <div class="logo_sponsor"><a href="http://www.istic.univ-rennes1.fr/"><img src="img/logo_istic.png"
                                                                                        alt="ISTIC"></a></div>
         </div>
+    </div>
+    <div class="row">
+        <div class="text-center">Pour nous rejoindre : <a href="mailto:contact@breizhcamp.org">contact@breizhcamp.org</a></div>
     </div>
 </div>
 
@@ -307,7 +371,7 @@
 </ul>
 
 <ul class="nav feedback">
-    <li><a href="mailto:team@breizhjug.org" title="Feedback">Feedback</a></li>
+    <li><a href="mailto:team@breizhcamp.org" title="Feedback">Feedback</a></li>
 </ul>
 
 
@@ -322,11 +386,10 @@
 <!-- endbower -->
 <!-- endbuild -->
 <script src="js/scroll.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min.js"></script>
-<script src="https://pagedown.googlecode.com/hg/Markdown.Converter.js"></script>
-<script src="https://pagedown.googlecode.com/hg/Markdown.Sanitizer.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.0/ui-bootstrap-tpls.min.js"></script>
 <script>
-    var app = angular.module("Programme", []);
+    var app = angular.module("Programme", ['ui.bootstrap']);
     var trackColors = {
         'keynote': '#2D6B5F',
         'track1': '#F80355',
@@ -335,6 +398,8 @@
         'track4': '#F67906',
         'track5': '#5D5094',
         'track6': '#9D3FC9',
+        'track7': '#FFD700',
+        'track8': '#00CED1',
         'break': '#eee'
     };
     var formatIcons = {
@@ -347,7 +412,7 @@
         'Hand\'s on Labs': 'fa-flask',
         'Quickie': 'fa-clock-o'
     };
-    function ProgrammeCtrl($scope, $http, $log) {
+    app.controller('ProgrammeCtrl', function ($scope, $http, $modal) {
         $scope.loading = true;
         $scope.room = "";
         $http.get("./json/schedule.json")
@@ -355,9 +420,25 @@
                 $scope.programme = data.programme;
                 $scope.loading = false;
             });
-        $scope.converter = new Markdown.getSanitizingConverter();
         $scope.showDetailOfTalk = function (id) {
-            window.location = "http://cfp.breizhcamp.org/2015/talk/" + id;
+            $modal.open({
+                animation: true,
+                template: '<header class="modal-header">' +
+                '    <button type="button" class="close" ng-click="$dismiss()">&times;</button>' +
+                '&nbsp;</header>' +
+                '<section class="modal-body">' +
+                '    <iframe frameborder="0" width="100%" height="600" ng-src="{{talkUrl}}"></iframe>' +
+                '</section>',
+                size: 'lg',
+                resolve: {
+                    talkUrl: function() {
+                        return "http://cfp.breizhcamp.org/2015/talk/" + id;
+                    }
+                },
+                controller: function($scope, talkUrl, $sce) {
+                    $scope.talkUrl = $sce.trustAsResourceUrl(talkUrl);
+                }
+            });
         };
         $scope.loadAllCalendar = function () {
             angular.forEach($scope.programme.jours, function (jour) {
@@ -411,30 +492,28 @@
                     (event.room ? ' (' + event.room + ')' : '');
             }
 
-            angular.forEach(jour.tracks, function (track) {
-                angular.forEach(track.proposals, function (talk) {
-                    if ($scope.room == "" || $scope.room == talk.room) {
-                        var timeInField = talk.start.split(':');
-                        var startHour = parseInt(timeInField[0]);
-                        var startMinutes = parseInt(timeInField[1]);
-                        timeInField = talk.end.split(':');
-                        var endHour = parseInt(timeInField[0]);
-                        var endMinutes = parseInt(timeInField[1]);
-                        var event = {
-                            title: talk.title,
-                            start: new Date(year, month - 1, day, startHour, startMinutes),
-                            end: new Date(year, month - 1, day, endHour, endMinutes),
-                            id: talk.id,
-                            room: talk.room,
-                            allDay: false,
-                            color: trackColors[track.type],
-                            textColor: 'black',
-                            format: talk.format,
-                            favorite: favorites[talk.id]
-                        };
-                        events.push(event);
-                    }
-                });
+            angular.forEach(jour.proposals, function (talk) {
+                if ($scope.room == "" || $scope.room == talk.room) {
+                    var timeInField = talk.start.split(':');
+                    var startHour = parseInt(timeInField[0]);
+                    var startMinutes = parseInt(timeInField[1]);
+                    timeInField = talk.end.split(':');
+                    var endHour = parseInt(timeInField[0]);
+                    var endMinutes = parseInt(timeInField[1]);
+                    var event = {
+                        title: talk.title,
+                        start: new Date(year, month - 1, day, startHour, startMinutes),
+                        end: new Date(year, month - 1, day, endHour, endMinutes),
+                        id: talk.id,
+                        room: talk.room,
+                        allDay: false,
+                        color: trackColors[talk.track],
+                        textColor: 'black',
+                        format: talk.format,
+                        favorite: favorites[talk.id]
+                    };
+                    events.push(event);
+                }
             });
             $('#calendar' + jour.title).fullCalendar('removeEvents');
             $('#calendar' + jour.title).html('');
@@ -463,7 +542,7 @@
                     agenda: timeFormat
                 },
                 eventClick: function (calEvent, jsEvent, view) {
-                    if (calEvent.id != 'TBD' && calEvent.id != '') {
+                    if (calEvent.id !== 'TBD' && calEvent.id) {
                         $scope.showDetailOfTalk(calEvent.id);
                     }
                 },
@@ -492,7 +571,7 @@
                             $scope.toggleFavorite(evt.data);
 
                         });
-                        element.find('.fc-event-time').prepend(favIcon);                    
+                        element.find('.fc-event-time').prepend(favIcon);
                     }
                 },
                 events: events
@@ -504,7 +583,7 @@
                 day);
         };
 
-    }
+    });
     app.directive('calendar', function ($parse, $timeout) {
         return {
             restrict: "A",
