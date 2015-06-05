@@ -774,7 +774,7 @@
         "track": ""
     }, 
     {
-        "description": "En 16 ans d'existence, Lucene s'est fait une place de choix dans le monde des moteurs de recherche et fait figure de pionnier dans le monde des bases de donn\u00e9es NoSQL open-source. Con\u00e7u \u00e0 l'origine pour r\u00e9soudre des probl\u00e8mes de recherche plein texte, Lucene est aussi une alternative de plus en plus cr\u00e9dible comme document store ou moteur d'analytics. Dans cette pr\u00e9sentation je vous propose d'expliquer ce que Lucene sait faire et les grandes lignes de son fonctionnement, notamment en comparaison par rapport aux autres bases de donn\u00e9es existentes.", 
+        "description": "En 16 ans d'existence, Lucene s'est fait une place de choix dans le monde des moteurs de recherche et fait figure de pionnier dans le monde des bases de donn\u00e9es NoSQL open-source. Con\u00e7u \u00e0 l'origine pour r\u00e9soudre des probl\u00e8mes de recherche plein texte, Lucene est aussi une alternative de plus en plus cr\u00e9dible comme document store ou moteur d'analytics. Dans cette pr\u00e9sentation je vous propose d'expliquer ce que Lucene sait faire et les grandes lignes de son fonctionnement, notamment en comparaison par rapport aux autres bases de donn\u00e9es existantes.", 
         "format": "Conf\u00e9rence", 
         "id": "KZY-0431", 
         "speakers": [
@@ -1060,7 +1060,7 @@
     {
         "description": "Marre de votre serveur d'application ? Envie d'un framework l\u00e9ger pour d\u00e9velopper des web services ? Alors venez essayer Dropwizard ! \r\nDans une session de live coding nous allons d\u00e9velopper un service REST, y ajouter des m\u00e9triques pour \u00eatre pote avec les Ops, le tester unitairement et d\u00e9ployer tout \u00e7a sans serveur d'application.", 
         "format": "Quickie", 
-        "id": "KPY-0613", 
+        "id": "KPY-0613", l
         "speakers": [
             {
                 "fullname": "Ludovic Chane Won In", 
